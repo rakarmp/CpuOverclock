@@ -102,7 +102,7 @@ echo "0" > /sys/module/lowmemorykiller/parameters/enable_adaptive_lmk
 sleep 2
 echo "Disable thermal throttling"
 # Disable Thermal Throttling
-echo "0" > /sys/module/msm_thermal/core_control/enabled
+su -c stop thermal-engine
 sleep 2
 echo "Disable dynamic memory management"
 # Disable Dynamic Memory Management
