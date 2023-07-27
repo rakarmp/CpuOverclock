@@ -14,6 +14,8 @@ if [ $# -eq 0 ]; then
     echo "CATATAN: Skrip ini HARUS dijalankan sebagai root untuk melakukan perubahan konfigurasi!"
     echo -n "Frekuensi CPU min saat ini: "; cat /sys/devices/system/cpu/cpu0/cpufreq/scaling_min_freq
     echo -n "Frekuensi CPU max saat ini: "; cat /sys/devices/system/cpu/cpu0/cpufreq/scaling_max_freq
+    echo -n "Frekuensi CPU Cluster 2 min saat ini :"; cat /sys/devices/system/cpu/cpu4/cpufreq/scaling_min_freq
+    echo -n "Frekuensi CPU Cluster 2 max saat ini :"; cat /sys/devices/system/cpu/cpu4/cpufreq/scaling_max_freq
     echo -n "Governor CPU saat ini: "; cat /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor
     echo -n "Frekuensi CPU saat ini: "; cat /sys/devices/system/cpu/cpu0/cpufreq/scaling_cur_freq
     echo "Frekuensi CPU yang tersedia: $freqs"
@@ -22,6 +24,7 @@ if [ $# -eq 0 ]; then
     if [ $min ]; then
         if [ $(echo $freqs | grep -q -E " $min |^$min | $min$"; echo $?) -eq 0 ]; then
             echo $min > /sys/devices/system/cpu/cpu0/cpufreq/scaling_min_freq && echo "Selesai"
+            echo $min > /sys/devices/system/cpu/cpu4/cpufreq/scaling_min_freq && echo "Selesai"
         else
             echo "Harap masukkan nilai yang valid untuk frekuensi CPU min!" 1>&2
         fi
@@ -32,6 +35,7 @@ if [ $# -eq 0 ]; then
     if [ $max ]; then
         if [ $(echo $freqs | grep -q -E " $max |^$max | $max$"; echo $?) -eq 0 ]; then
             echo $max > /sys/devices/system/cpu/cpu0/cpufreq/scaling_max_freq && echo "Selesai"
+            echo $max > /sys/devices/system/cpu/cpu4/cpufreq/scaling_max_freq && echo "Selesai"
         else
             echo "Harap masukkan nilai yang valid untuk frekuensi CPU max!" 1>&2
         fi
@@ -92,3 +96,38 @@ else
         fi
     fi
 fi
+echo "low memory killer"
+# Low Memory Killer
+echo "0" > /sys/module/lowmemorykiller/parameters/enable_adaptive_lmk
+sleep 2
+echo "Disable thermal throttling"
+# Disable Thermal Throttling
+echo "0" > /sys/module/msm_thermal/core_control/enabled
+sleep 2
+echo "Disable dynamic memory management"
+# Disable Dynamic Memory Management
+echo "0" > /sys/module/lowmemorykiller/parameters/enable_adaptive_lmk
+sleep 2 
+echo "Disable dynamic scaling service"
+# Disable Dynamic Scaling Service
+stop dynamic_scaling_service
+sleep 2
+echo "set i/o scheduler"
+# Set I/O Scheduler to noop
+echo "noop" > /sys/block/mmcblk0/queue/scheduler
+sleep 2
+echo "screen animation off"
+# Screen Animation Off
+settings put global window_animation_scale 0
+settings put global transition_animation_scale 0
+settings put global animator_duration_scale 0
+sleep 2
+  echo "OpenGl Optimize"
+# OpenGL Optimize
+setprop debug.egl.hw 1
+setprop debug.egl.profiler 0
+setprop debug.egl.profiler_ms 0
+
+# Jeda 1 detik
+sleep 1
+  echo "Customcpu Success, @Zyarexx (Rakarmp)"
