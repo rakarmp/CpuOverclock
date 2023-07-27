@@ -11,6 +11,12 @@
 
 if [ $# -eq 0 ]; then
     freqs=$(cat /sys/devices/system/cpu/cpu0/cpufreq/scaling_available_frequencies)
+    echo "
+███████████████████████████████████████████████
+█▄─▄─▀█─▄▄─█─▄▄─█─▄▄▄▄█─▄─▄─█▄─▄▄▀█▄─▄▄─█▄─▄▄─█
+██─▄─▀█─██─█─██─█▄▄▄▄─███─████─██─██─▄█▀██─▄▄▄█
+▀▄▄▄▄▀▀▄▄▄▄▀▄▄▄▄▀▄▄▄▄▄▀▀▄▄▄▀▀▄▄▄▄▀▀▄▄▄▄▄▀▄▄▄▀▀▀"
+    echo ""
     echo "CATATAN: Skrip ini HARUS dijalankan sebagai root untuk melakukan perubahan konfigurasi!"
     echo -n "Frekuensi CPU min saat ini: "; cat /sys/devices/system/cpu/cpu0/cpufreq/scaling_min_freq
     echo -n "Frekuensi CPU max saat ini: "; cat /sys/devices/system/cpu/cpu0/cpufreq/scaling_max_freq
@@ -26,7 +32,7 @@ if [ $# -eq 0 ]; then
             echo $min > /sys/devices/system/cpu/cpu0/cpufreq/scaling_min_freq && echo "Selesai"
             echo $min > /sys/devices/system/cpu/cpu4/cpufreq/scaling_min_freq && echo "Selesai"
         else
-            echo "Harap masukkan nilai yang valid untuk frekuensi CPU min!" 1>&2
+            echo "Yang Bener dong kocak liat nilai frekuensi CPU Yang tersedia!" 1>&2
         fi
     fi
     unset min
@@ -37,7 +43,7 @@ if [ $# -eq 0 ]; then
             echo $max > /sys/devices/system/cpu/cpu0/cpufreq/scaling_max_freq && echo "Selesai"
             echo $max > /sys/devices/system/cpu/cpu4/cpufreq/scaling_max_freq && echo "Selesai"
         else
-            echo "Harap masukkan nilai yang valid untuk frekuensi CPU max!" 1>&2
+            echo "Kocak liat frekuensi CPU Yang tersedia diatas!" 1>&2
         fi
     fi
     unset max
@@ -50,7 +56,7 @@ if [ $# -eq 0 ]; then
         if [ $(echo $gvnrs | grep -q -E " $gvnr |^$gvnr | $gvnr$"; echo $?) -eq 0 ]; then
             echo $gvnr > /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor && echo "Selesai"
         else
-            echo "Harap masukkan tipe governor CPU yang valid!" 1>&2
+            echo "Kocak kocak liat governor yang tersedia di depis lu!" 1>&2
         fi
     fi
     unset gvnr
