@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Custom CPU Script</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+
+        h1 {
+            color: #333;
+        }
+
+        p {
+            margin-bottom: 10px;
+        }
+
+        .code {
+            background-color: #f5f5f5;
+            padding: 10px;
+            border-radius: 5px;
+            font-family: monospace;
+        }
+
+        .button {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #333;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+
+        .button:hover {
+            background-color: #555;
+        }
+    </style>
+</head>
+<body>
+    <h1>Custom CPU Script</h1>
+    <p>
+        Kode di bawah ini adalah sebuah skrip shell untuk mengatur pengaturan CPU pada perangkat Android yang menggunakan ROM kustom.
+        Skrip ini memungkinkan pengguna untuk mengatur frekuensi minimum (MINFREQ) dan maksimum (MAXFREQ) CPU, serta mengubah governor
+        yang mengontrol bagaimana CPU beroperasi.
+    </p>
+
+    <div class="code">
+        <pre>
+/sys/devices/system/cpu/cpu0/cpufreq/scaling_governor
+        else
+            echo "Please use a valid type of CPU governor!" 1>&2
+        fi
+    fi
+fi
+        </pre>
+    </div>
+
+    <h2>Cara Penggunaan</h2>
+    <ol>
+        <li>Clone repository ini dengan menggunakan perintah berikut:</li>
+    </ol>
+
+    <div class="code">
+        <pre>
+git clone https://github.com/rakarmp/CpuOverclock.git
+        </pre>
+    </div>
+
+    <ol start="2">
+        <li>Setelah berhasil mengklon repository, jalankan skrip dengan perintah berikut:</li>
+    </ol>
+
+    <div class="code">
+        <pre>
+./customcpu.sh
+        </pre>
+    </div>
+
+    <h2>Fitur-Fitur</h2>
+    <ul>
+        <li>Mengatur frekuensi minimum (MINFREQ) dan maksimum (MAXFREQ) CPU.</li>
+        <li>Mengubah governor yang mengontrol bagaimana CPU beroperasi.</li>
+    </ul>
+
+    <a class="button" href="https://github.com/rakarmp/CpuOverclock.git">Download Script</a>
+</body>
+</html>
