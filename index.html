@@ -1,95 +1,70 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Custom CPU Script</title>
+    <meta charset="UTF-8">
+    <title>CPU Tweaks for Android Devices</title>
     <style>
         body {
             font-family: Arial, sans-serif;
             margin: 20px;
         }
-
         h1 {
-            color: #333;
+            color: #007bff;
         }
-
+        h2 {
+            color: #00a000;
+        }
         p {
-            margin-bottom: 10px;
+            line-height: 1.6;
         }
-
-        .code {
-            background-color: #f5f5f5;
-            padding: 10px;
-            border-radius: 5px;
-            font-family: monospace;
+        code {
+            font-family: "Courier New", monospace;
+            background-color: #f2f2f2;
+            padding: 2px 5px;
+            border-radius: 4px;
         }
-
-        .button {
-            display: inline-block;
-            padding: 10px 20px;
-            background-color: #333;
-            color: #fff;
-            text-decoration: none;
-            border-radius: 5px;
-        }
-
-        .button:hover {
-            background-color: #555;
+        .warning {
+            color: #ff0000;
+            font-weight: bold;
         }
     </style>
 </head>
 <body>
-    <h1>Custom CPU Script</h1>
+    <h1>CPU Tweaks for Android Devices</h1>
     <p>
-        Kode di bawah ini adalah sebuah skrip shell untuk mengatur pengaturan CPU pada perangkat Android yang menggunakan ROM kustom.
-        Skrip ini memungkinkan pengguna untuk mengatur frekuensi minimum (MINFREQ) dan maksimum (MAXFREQ) CPU, serta mengubah governor
-        yang mengontrol bagaimana CPU beroperasi.
+        Welcome to the guide on using the <code>setcpu</code> script to optimize CPU settings on your Android device with a custom ROM.
+        The script allows you to customize CPU frequencies, select a CPU governor, and apply performance optimizations.
     </p>
 
-    <div class="code">
-        <pre>
-/sys/devices/system/cpu/cpu0/cpufreq/scaling_governor
-        else
-            echo "Please use a valid type of CPU governor!" 1>&2
-        fi
-    fi
-fi
-        </pre>
-    </div>
-
-    <h2>Cara Penggunaan</h2>
+    <h2>Step-by-Step Guide</h2>
     <ol>
-        <li>Clone repository ini dengan menggunakan perintah berikut:</li>
+        <li><strong>Understand the Risks:</strong> Tweaking CPU settings can impact device performance and stability. Back up your data before proceeding.</li>
+        <li><strong>Root Access:</strong> Ensure your device is rooted, as the script requires root privileges to make changes.</li>
+        <li><strong>Download the Script:</strong> Obtain the <code>setcpu</code> script and place it on your device. Make sure it has executable permissions.</li>
+        <li><strong>Open Terminal Emulator:</strong> Launch a terminal emulator app on your Android device to execute the script.</li>
+        <li><strong>Grant Root Access:</strong> Type <code>su</code> and press Enter to grant root access to the terminal.</li>
+        <li><strong>Choose Language Version:</strong> Depending on your language preference, select either the English or Bahasa Indonesia version of the script.</li>
+        <li><strong>Execute the Script:</strong> Run the script by typing the following command based on your choice:<br>
+            English Version: <code>./setcpu-en.sh</code><br>
+            Bahasa Indonesia Version: <code>./setcpu-id.sh</code></li>
+        <li><strong>Follow the Interactive Setup:</strong> If you didn't provide any parameters, the script will guide you interactively to configure CPU settings.</li>
+        <li><strong>Monitor CPU Status:</strong> Consider using <code>watch -n1 setcpu -s</code> to view real-time CPU status updates.</li>
     </ol>
 
-    <div class="code">
-        <pre>
-git clone https://github.com/rakarmp/CpuOverclock.git
-        </pre>
-    </div>
+    <h2 class="warning">Important Warnings</h2>
+    <p class="warning">
+        <strong>Warning:</strong> Incorrect CPU settings can lead to device instability, overheating, or data loss. Use the script at your own risk.
+    </p>
+    <p>
+        <strong>Note:</strong> Ensure you understand the implications of each CPU setting before making changes. Research thoroughly or seek expert advice if unsure.
+    </p>
 
-    <ol start="2">
-        <li>Setelah berhasil mengklon repository, jalankan skrip dengan perintah berikut:</li>
-    </ol>
-
-    <div class="code">
-        <pre>
-./customcpu.sh
-        </pre>
-    </div>
-
-    <h2>Fitur-Fitur</h2>
-    <ul>
-        <li>Mengatur frekuensi minimum (MINFREQ) dan maksimum (MAXFREQ) CPU.</li>
-        <li>Mengubah governor yang mengontrol bagaimana CPU beroperasi.</li>
-        <li>Low Memory Killer</li>
-        <li>Disable Thermal Throttling</li>
-        <li>Disable dynamic memory management</li>
-        <li>Disable dynamic scaling service</li>
-        <li>Set I/O Scheduler => noop</li>
-        <li>Screen animation off</li>
-        <li>OpenGl Optimize</li>
-    </ul>
-
-    <a class="button" href="https://github.com/rakarmp/CpuOverclock.git">Download Script</a>
+    <h2>Enjoy the Enhanced Performance!</h2>
+    <p>
+        With the <code>setcpu</code> script, you can unleash the full potential of your Android device's CPU, optimizing it for your specific needs.
+        Have fun exploring and experimenting with the settings!
+    </p>
+</body>
+</html>
 </body>
 </html>
